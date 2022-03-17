@@ -31,74 +31,77 @@ func main() {
 		fmt.Println("Error! No input file specified. Exiting.")
 		return
 	}
-	fmt.Printf("\n\tUsing %s as input file.\n", input_mov)
-	fmt.Printf("\tUsing %s as output file.\n\n", output_mov)
+	fmt.Printf("\n\tusing %s as input file.\n", input_mov)
+	fmt.Printf("\tusing %s as output file.\n\n", output_mov)
 
 
 	// Choose resolusion ///////////////////////////////////////////////////////
 	fmt.Println("\tplease choose a resolution")
 	fmt.Println("\t\t0 - input res (default)")
-	fmt.Println("\t\t1 - half size")
-	fmt.Println("\t\t2 - double")
-	fmt.Println("\t\t3 - 720p")
-	fmt.Println("\t\t4 - 1080p")
-	fmt.Println("\t\t5 - 4k")
-	fmt.Print("\t\tchoice : ")
+	fmt.Println("\t\t1 - 720p")
+	fmt.Println("\t\t2 - 1080p")
+	fmt.Print("\tchoice : ")
 	reader := bufio.NewReader(os.Stdin)
 	choice, err := reader.ReadString('\n')
 	choice = strings.TrimSuffix(choice, "\n")
 	res, err := strconv.Atoi(choice)
 	if err != nil {
-		fmt.Println("\tNothing or garbage entered, using default.")
+		fmt.Println("\tusing default.")
 		res = 0
 	}
-	fmt.Printf("\tUsing option %d. Carrying on...\n", res)
+	fmt.Printf("\tusing option %d. carrying on...\n", res)
 
 
 	// Choose quality //////////////////////////////////////////////////////////
 	fmt.Println("\n\tplease choose a quality value [ 0 (best) to 51 (worst) ] (23 default)")
-	fmt.Print("\t\tchoice : ")
+	fmt.Print("\tchoice : ")
 	reader = bufio.NewReader(os.Stdin)
 	choice, err = reader.ReadString('\n')
 	choice = strings.TrimSuffix(choice, "\n")
 	qual, err := strconv.Atoi(choice)
 	if err != nil {
-		fmt.Println("\tNothing or garbage entered, using default.")
+		fmt.Println("\tusing default.")
 		qual = 23
 	}
-	fmt.Printf("\tUsing quality %d. Carrying on...\n", qual)
+	fmt.Printf("\tusing quality %d. carrying on...\n", qual)
 
 	// check res mod 2 for even width and height issues... TODO
 
 	// Build ffmpeg command to run /////////////////////////////////////////////
-	fmt.Println("\tFinding FFMPEG in PATH...")
+	fmt.Println("\tfinding FFMPEG in PATH...")
 	ffmpeg, err := exec.LookPath("ffmpeg")
 	if err != nil {
 		fmt.Println("ERROR! Couldn't find ffmpeg in your PATH. Please update and try again.")
 		return
 	}
-	fmt.Printf("\tFound FFMPEG command here: %s\n", ffmpeg)
+	fmt.Printf("\tfound FFMPEG command here: %s\n", ffmpeg)
 
-	fmt.Println("\tBuilding FFMPEG command.")
+	fmt.Println("\tbuilding FFMPEG command.")
 	var cmd string
 	cmd  = ffmpeg
 	cmd += " -y"
-	// cmd += " -hide_banner -loglevel panic"
+	cmd += " -hide_banner -loglevel panic"
 	cmd += " -i"
-	cmd += fmt.Sprintf(" \"%s\"", input_mov)
+	cmd += fmt.Sprintf(" %s", input_mov)
 	cmd += " -pix_fmt yuv420p -c:v libx264"
 	cmd += fmt.Sprintf(" -crf %d", qual)
+	// resolution options
+	if res == 1 {
 	cmd += fmt.Sprintf(" -vf scale=%d:%d", 1280, 720)
-	cmd += fmt.Sprintf(" \"%s\"", output_mov)
-	fmt.Printf("\tCMD = %s.\n", cmd)
-	fmt.Println("\tRunning command...")
+	} else if res == 2 {
+	cmd += fmt.Sprintf(" -vf scale=%d:%d", 1920, 1080)
+	} else {
+	}
+	cmd += fmt.Sprintf(" %s", output_mov)
+	// fmt.Printf("\tCMD = %s.\n", cmd)
+	fmt.Println("\trunning command...\n")
 	cmdargs := strings.Split(cmd, " ")
 	syscmd  := exec.Command(cmdargs[0], cmdargs[1:]...)
 	b, cmderr := syscmd.CombinedOutput()
 	if cmderr != nil {
-		fmt.Printf("Running ffmpeg failed, %v", cmderr)
+		fmt.Printf("\nERROR! Running ffmpeg failed, %v\n", cmderr)
 	}
 	fmt.Printf("%s\n", b)
 
-	fmt.Println("Done! Exiting.")
+	fmt.Printf("\tdone with %s!\n\n", output_mov)
 }
