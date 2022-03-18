@@ -1,7 +1,7 @@
 # nv_vse_ffmpeg_mov2mp4
 
 ## info
-This is a very simple tool for converting and kinda video file into an mp4, letting you choose 
+This is a **very** simple tool for converting any kind of video file into an mp4, letting you choose 
 the compression rate and also some built in resolutions. This will have to be expanded in the
 future or as the need arises. This **SHOULD** work fine on linux, mac and windows, as long as
 you have [FFMPEG](https://www.ffmpeg.org/) installed, and included in your `PATH`.
@@ -52,4 +52,4 @@ should be possible.
 - Under `System Variables`, search for `PATH`, and edit it to include `C:\ffmpeg\bin`
 - Click `OK` until all dialogs are closed.
 - Grab `nv_vse_ffmpeg_mov2mp4_win.zip`, and unzip where you need it.
-- Drag a video file on top of the app, or a shortcut to it, and 
+- Drag a video file on top of the app, or a shortcut to it, and live life to the full.
