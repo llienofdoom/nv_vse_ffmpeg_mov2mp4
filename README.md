@@ -45,7 +45,7 @@ should be possible.
 
 ### windows
 - Make a folder in your `C:` drive called `C:\ffmpeg`.
-- Go to : https://github.com/BtbN/FFmpeg-Builds/releases and download `ffmpeg-master-latest-win64-gpl.zip`.
+- Go to : https://github.com/BtbN/FFmpeg-Builds/releases and download [ffmpeg-master-latest-win64-gpl.zip](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip).
 - Unzip zip file, and copy contents into `C:\ffmpeg`, leaving you with a `bin`, `presets`, `doc` etc inside.
 - Press `START`, type `env`, and pick `Edit the System Environment Variables`.
 - Click `Environment Variables` at the bottom of the page.
