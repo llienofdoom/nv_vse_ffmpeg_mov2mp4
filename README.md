@@ -32,14 +32,14 @@ the method below to install it normally. Also I'm sure something like
 This should be all you need. Well, that and this app ;-)
 
 ### mac
-- Grab `nv_vse_ffmpeg_mov2mp4_mac.zip` from Releases, and unzip where you need it.
+- Grab `nv_vse_ffmpeg_mov2mp4_mac.zip` from [Releases](https://github.com/llienofdoom/nv_vse_ffmpeg_mov2mp4/releases), and unzip where you need it.
 - You can add this location to your **PATH** to have it globally accessible, or run it locally. 
 - Open a Terminal window and `nv_vse_ffmpeg_mov2mp4_mac [video_file]`
 I can look into making a standalone Mac Launcher for this if I get some time. Then drag and drop
 should be possible.
 
 ### linux
-- Grab `nv_vse_ffmpeg_mov2mp4_lin.zip` from Releases, and unzip where you need it.
+- Grab `nv_vse_ffmpeg_mov2mp4_lin.zip` from [Releases](https://github.com/llienofdoom/nv_vse_ffmpeg_mov2mp4/releases), and unzip where you need it.
 - You can add this location to your **PATH** to have it globally accessible, or run it locally. 
 - Open a Terminal window and `nv_vse_ffmpeg_mov2mp4_lin [video_file]`
 
@@ -51,5 +51,5 @@ should be possible.
 - Click `Environment Variables` at the bottom of the page.
 - Under `System Variables`, search for `PATH`, and edit it to include `C:\ffmpeg\bin`
 - Click `OK` until all dialogs are closed.
-- Grab `nv_vse_ffmpeg_mov2mp4_win.zip` from Releases, and unzip where you need it.
+- Grab `nv_vse_ffmpeg_mov2mp4_win.zip` from [Releases](https://github.com/llienofdoom/nv_vse_ffmpeg_mov2mp4/releases), and unzip where you need it.
 - Drag a video file on top of the app, or a shortcut to it, and live life to the full.
