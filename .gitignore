@@ -1,6 +1,4 @@
 .DS_Store
 *.mov
 *.mp4
-nv_vse_ffmpeg_mov2mp4_lin
-nv_vse_ffmpeg_mov2mp4_mac
-nv_vse_ffmpeg_mov2mp4_win
+nv_vse_ffmpeg_mov2mp4*
